@@ -4,7 +4,7 @@ title:  "Laboratorio #2"
 subtitle:  "Enteros y ASCII"
 date:   2014-01-23 21:28:27
 categories: labs
-published: false
+published: true
 due_date: 2014-01-29
 excerpt: Operaciones con enteros y ASCII.
 tags: c integers ascii
