@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "Laboratorio #3"
+subtitle:  "Punteros"
+date:   2014-01-24 06:28:27
+categories: labs
+published: true
+due_date: 2014-01-29
+excerpt: Operaciones con punteros
+tags: c pointers
+---
+
+## Objetivos
+
+- Poner en práctica conceptos básicos del lenguaje C, como funciones, control de flujo y punteros.
+- Familiarizarse con el uso de punteros y las funcionas malloc y free.
+- Que le pierdan el miedo a los punteros.
+
+---
+
+## Ambiente de trabajo
+
+Debe tener listo todo el ambiente de trabajo, si tiene dudas sobre configuración, consulte el [Laboratorio #1](/ug-cc3-labs/labs/calculator.html).
+
+--
+
+## Descripción
+
+Para esta asignación deberá implementar las siguientes funciones:
+
+{% highlight c %}
+int mystrlen (char* str); /* regresa el largo de un string */
+{% endhighlight %}
+
+{% highlight c %}
+int mystrcmp (char* stra, char* strb); /* regresa 0 si los strings no son iguales y regresa 1 si son iguales */
+{% endhighlight %}
+
+{% highlight c %}
+void mystrcpy (char* stra, char* strb); /* copia el contenido del primer string al segundo */
+{% endhighlight %}
+
+{% highlight c %}
+char* mystreverse (char *a); /* (si, solo lleva una 'r') Devuelve el string recibido pero al reves (NO cambia el original), utilice malloc */
+{% endhighlight %}
+
+{% highlight c %}
+char* mystrcat(char *a, char *b) /* concatena dos strings y devuelve uno nuevo con resultado, utilice malloc */
+{% endhighlight %}
+
+NO puede utilizar las funciones de la libreria estandar de C que ya implementan estas funcionalidades.
+
+Puede utilizar el siguiente main para sus pruebas si así lo desea
+
+{% highlight c %}
+int main() {
+  char* str0 = "hola";
+  char* str1 = "hala";
+  char* str2 = "holamundo";
+  char* str3 = "mundo";
+  char* str4 = (char *) malloc (sizeof (str1) + 1);
+  char* str5 = mystrcat (str0,str3);
+  char* str6 = mystreverse(str0);
+  mystrcpy(str0,str4);
+
+  printf("Copia hola:%s\n",str4);
+  printf("Largo 5:%i 9:%i\n",mystrlen(str3),mystrlen(str2));
+  printf("Concatenando %s%s:%s\n",str0,str3,str5);
+  printf("Al reves hola:%s aloh:%s\n",str0,str6);
+  printf("Comparaciones %s es igual a %s? - si:%s\n",str0,str4,(mystrcmp(str0,str4))==1?"si":"no");
+  printf("Comparaciones %s es igual a %s? - si:%s\n",str2,str5,(mystrcmp(str2,str5))==1?"si":"no");
+  printf("Comparaciones %s es igual a %s? - no:%s\n",str0,str1,(mystrcmp(str0,str1))==1?"si":"no");
+  printf("Comparaciones %s es igual a %s? - no:%s\n",str0,str2,(mystrcmp(str0,str2))==1?"si":"no");
+  free(str4);
+  free(str5);
+  free(str6);
+  return 0;
+}
+{% endhighlight %}
+
+--
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 29 de enero 2014**, debe enviar un archivo llamado `carnet.c` conteniendo su programa.  
+  
+No envíe archivos `.zip`, `.rar` , `.7z` o similares. Si lo hace, su respuesta **no** será tomada en cuenta.
+
+--
