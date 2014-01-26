@@ -1,0 +1,203 @@
+---
+layout: post
+title:  "Laboratorio #4"
+subtitle:  "Introducción a MIPS"
+date:   2014-01-26 06:28:27
+categories: labs
+published: true
+due_date: 2014-02-05
+excerpt: Introducción a MIPS
+tags: mips intro
+---
+
+## Objetivos
+
+- Poner en práctica conceptos básicos vistos sobre MIPS.
+- Familiarizarse con el uso del simulador de MIPS MARS.
+- Tomar práctica escribiendo programas de MIPS.
+
+---
+
+## Ambiente de trabajo
+
+Debe descargar del GES, en la sección de materil de apoyo, el simulador MARS (un .jar). Adicionalmente deberá tener
+el runtime de Java instalado.
+
+--
+
+## Descripción
+
+Para este laboratorio vamos a realizar un programa de MIPS que reciba 2 números del teclado e imprima lo siguiente:
+
+{% highlight c %}
+// suma
+int suma(int a0, int a1)
+{% endhighlight %}
+
+{% highlight c %}
+// resta
+int resta(int a0, int a1)
+{% endhighlight %}
+
+{% highlight c %}
+// and
+int miand(int a0, int a1)
+{% endhighlight %}
+
+{% highlight c %}
+// or
+int mior(int a0, int a1)
+{% endhighlight %}
+
+{% highlight c %}
+// el mayor de dos números
+int max(int a0, int a1)
+{% endhighlight %}
+
+Cada operación debe ser implementada con una función que reciba los dos números como parámetros. Por si no lo sabe aún, en MIPS, los argumentos a funciones se reciben
+en registros $a0, $a1, $a2... (Nota mental: no olvidar los registros `$a0` y `$a1`).  
+
+Para realizar la suma debe implementar una función que reciba como parámetros los números a sumar, efectúe la suma y guarde el resultado en el registro `$v0`. El resultado de la función **será impreso por el programa que mando a llamar la función, en este caso main, y no por la función**.  
+
+Para ayudarlo un poco, recibirá código de una función `main` y algunas funciones útiles para su programa, revise el código y entiéndalo para que se le facilite el trabajo. 
+Puede buscar en Google, y consultar el cheat sheet de MIPS en la sección de material de apoyo en el GES.
+
+### Main
+
+{% highlight bash %}
+.data
+    msgwel:        .asciiz "\nBienvenidos al laboratorio numero 4\n\n"
+    msgpn:         .asciiz "Ingrese el primer numero:"
+    msgsn:         .asciiz "Ingrese el segundo numero:"
+    msgadd:        .asciiz "\nEl resultado de la suma es:"
+    msgsub:        .asciiz "\nEl resultado de la resta es:"
+    msgand:        .asciiz "\nEl resultado de el and es:"
+    msgor:         .asciiz "\nEl resultado de el or es:"
+    msgmax:        .asciiz "\nEl numero mayor es:"
+
+.text
+    main:
+        la $a0 msgwel           #print_str("Bienvenidos al laboratorio numero 5")
+        li $v0 4                #print_str
+        syscall
+
+        la $a0 msgpn            #print_str("Ingrese el Primer Numero")
+        li $v0 4                #print_str
+        syscall
+
+        li $v0 5                #$s0 = read_int()
+        syscall
+
+        add $s0 $v0 $0
+        la $a0 msgsn            #print_str("Ingrese al segundo numero")
+        li $v0 4                #print_str
+        syscall
+
+        li $v0 5                #$s1 = read_int()
+        syscall
+
+        add $s1 $v0 $0
+
+        #Suma
+        la $a0 msgadd           #print_str("El resultado de la suma:")
+        li $v0 4                #print_str
+        syscall
+
+        add $a0 $s0 $0
+        add $a1 $s1 $0
+        jal suma
+
+        add $a0 $v0 $0
+        li $v0 1
+        syscall
+
+        #Resta
+        la $a0 msgsub           #print_str("El resultado de la resta:")
+        li $v0 4                #print_str
+        syscall
+
+        add $a0 $s0 $0
+        add $a1 $s1 $0
+        jal resta
+
+        add $a0 $v0 $0
+        li $v0 1
+        syscall
+
+        #miand
+        la $a0 msgand           #print_str("El resultado de el and:")
+        li $v0 4                #print_str
+        syscall
+
+        add $a0 $s0 $0
+        add $a1 $s1 $0
+        jal miand
+
+        add $a0 $v0 $0
+        li $v0 1
+        syscall
+
+        #mior
+        la $a0 msgor            #print_str("El resultado de el or:")
+        li $v0 4                #print_str
+        syscall
+
+        add $a0 $s0 $0          #$a0 = mior(s0, s1)
+        add $a1 $s1 $0
+        jal mior
+
+        add $a0 $v0 $0
+        li $v0 1
+        syscall
+
+        #max
+        la $a0 msgmax           #print_str("El numero mayor es:")
+        li $v0 4                #print_str
+        syscall
+
+        add $a0 $s0 $0
+        add $a1 $s1 $0
+        jal max
+
+        add $a0 $v0 $0
+        li $v0 1
+        syscall
+
+        j exit
+
+    exit:
+        li $v0 10
+        syscall
+
+    # Aqui comienzan sus funciones, le recomiendo que entienda el codigo
+    # que esta arriba para que se le facilite el trabajo :)
+
+    suma:                    # funcion suma
+        # agregue su codigo aqui
+        jr $ra               # regresamos a donde se mando a llamar esta funcion
+
+    resta:                   # funcion resta
+        # agregue su codigo aqui
+        jr $ra
+
+    miand:                   # funcion and
+        # agregue su codigo aqui
+        jr $ra
+
+    mior:                    # funcion or
+        # agregue su codigo aqui
+        jr $ra
+
+    max:                     # funcion max
+        # agregue su codigo aqui
+        jr $ra
+{% endhighlight %}
+
+--
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 5 de febrero 2014**, debe enviar un archivo llamado `carnet.s` conteniendo su programa.  
+  
+No envíe archivos `.zip`, `.rar` , `.7z` o similares. Si lo hace, su respuesta **no** será tomada en cuenta.
+
+-- 
