@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Laboratorio #4"
+title:  "Laboratorio #5"
 subtitle:  "Introducción a MIPS"
 date:   2014-01-26 06:28:27
 categories: labs
-published: true
+published: false
 due_date: 2014-02-05
 excerpt: Introducción a MIPS
 tags: mips intro
@@ -196,7 +196,7 @@ Puede buscar en Google, y consultar el cheat sheet de MIPS en la sección de mat
 --
 ## Entrega
 
-La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 5 de febrero 2014**, debe enviar un archivo llamado `carnet.s` conteniendo su programa.  
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 12 de febrero 2014**, debe enviar un archivo llamado `carnet.s` conteniendo su programa.  
   
 No envíe archivos `.zip`, `.rar` , `.7z` o similares. Si lo hace, su respuesta **no** será tomada en cuenta.
 

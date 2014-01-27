@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "Laboratorio #4"
+subtitle:  "Allegre Allegro"
+date:   2014-01-26 06:28:27
+categories: labs
+published: true
+due_date: 2014-02-05
+excerpt: Introducción a Allegro
+tags: c games allegro
+---
+
+## Objetivos
+
+- Poner en práctica conceptos básicos vistos sobre manejo de memoria y punteros.
+- Conocer la librería Allegro que se utilizará para el primer proyecto.
+
+---
+
+## Ambiente de trabajo
+
+Debe tener listo todo el ambiente de trabajo, incluyendo el compilador de ANSI C, si tiene dudas sobre configuración consulte los laboratorios #1 y #2
+
+--
+
+## Descripción
+
+Para este laboratorio vamos a hacer un sencillo juego, dado que estan aprendiendo vamos a permitirles que hagan el lab en parejas, **las mismas parejas del proyecto**. Entonces lo primero que deben hacer es crear su grupo, para esto pasen con su auxiliar de confianza más próximo.  
+
+Al crear su grupo recibirán un número, dependiendo de eso tendrán que elaborar un juego distinto.
+
+### Impares - GaliMath
+
+Este juego esta basado en `tuxmath`, caen desde arriba de la pantalla operaciones aritméticas básicas como suma, resta, multiplicación o divisón y el usuario debe ingresar el número del resultado de la operación que este más cerca de caer, cuando haya ingresado todos los digitos del número debe presionarse enter o space y si es correcta la respuesta sale desde abajo un rayo laser que destruye la operación y se quita de la pantalla.  
+
+El juego debe tener 4 niveles de dificultad, mientras más alto el nivel, más rápido caen las operaciones y tienen más digitos.
+Luego de que 3 operaciones lleguen hasta abajo de la pantalla (o se presione ESC) se termina el juego.
+
+Cada operación ingresada correctamente otorga 10 puntos al jugador. Al terminar el juego se debe mustrar el puntaje total obtenido.
+
+### Pares - GaliType
+
+Este juego esta basado en `tuxtype`, caen desde arriba de la pantalla palabras sencillas y el usuario debe ingresar las letras de la palabra en órden, comenzando de la que este más cerca de caer y cuando lo hace de forma correcta sale desde abajo un rayo laser que destruye la letra ingresada.  
+
+El juego debe tener 4 niveles de dificultad, mientras más alto el nivel, más rápido caen las palabras y tienen más letras.
+Luego de que 3 palabras lleguen hasta abajo de la pantalla (o se presione ESC) se termina el juego.
+
+Cada palabra ingresada correctamente otorga 10 puntos al jugador. Al terminar el juego se debe mustrar el puntaje total obtenido.
+
+
+### Referencias
+
+Para darse una mejor idea de lo que esperamos puede ver este [video](http://www.youtube.com/watch?v=PdbEh-it8zo), el primer minuto es de `tuxmath` y el resto de `tuxtype`.
+
+El [API](http://alleg.sourceforge.net/a5docs/5.0.10/) de Allegro también le puede resultar muy útil.
+
+--
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 5 de febrero 2014**, debe enviar un archivo llamado `grupo-n.zip` conteniendo todos los archivos de su juego.  
+
+-- 
