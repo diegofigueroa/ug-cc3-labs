@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Laboratorio #9"
-subtitle:  "Manejo de caracteres en MIPS"
+subtitle:  "Números en MIPS"
 date:   2014-02-07 06:28:27
 categories: labs
 published: true
