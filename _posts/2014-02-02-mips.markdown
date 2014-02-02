@@ -2,9 +2,9 @@
 layout: post
 title:  "Laboratorio #5"
 subtitle:  "Introducción a MIPS"
-date:   2014-01-26 06:28:27
+date:   2014-02-02 06:28:27
 categories: labs
-published: false
+published: true
 due_date: 2014-02-05
 excerpt: Introducción a MIPS
 tags: mips intro

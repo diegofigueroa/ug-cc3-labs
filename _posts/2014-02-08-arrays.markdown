@@ -1,0 +1,56 @@
+---
+layout: post
+title:  "Laboratorio #10"
+subtitle:  "Manejo de arreglos en MIPS"
+date:   2014-02-08 06:28:27
+categories: labs
+published: true
+due_date: 2014-02-08
+excerpt: Aprendiendo sobre arreglos en MIPS
+tags: mips arrays
+---
+
+## Objetivos
+
+- Poner en práctica conceptos básicos vistos sobre MIPS.
+- Familiarizarse con el uso del simulador de MIPS MARS.
+- Tomar práctica sobre manejo de arreglos en MIPS.
+
+---
+
+## Ambiente de trabajo
+
+Debe descargar del GES, en la sección de materil de apoyo, el simulador MARS (un .jar).  
+Adicionalmente deberá tener el runtime de Java instalado.
+
+--
+
+## Descripción
+
+Debe implementar una tabla con dos columnas, en la primera columna tiene un puntero al nombre de un alumno, en la segunda columna tiene la nota del alumno. Debe ser capaz de almacenar un maximo de 10 alumnos con sus notas.
+
+Estas son las funciones que debe implementar:
+
+{% highlight c %}
+// Esta función ingresa un alumno a la tabla y devuelve el id (posición) en que se ingreso el alumno.
+// int   insert_alumno(char * nom);
+// $a0       nom      // puntero al nombre del alumno
+// $v0       id
+
+// void  insert_nota(int id, int nota);
+// char *get_alumno(int id);
+// int   get_nota(int id);
+
+// Esta función devuelve el id del alumno pedido, en caso que no sea encontrado devuelve -1.
+// int   get_alumno_id(char *);
+
+{% endhighlight %}
+
+--
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 26 de marzo 2014**, debe enviar un archivo llamado `carnet.s` conteniendo su programa.  
+  
+No envíe archivos `.zip`, `.rar` , `.7z` o similares. Si lo hace, su respuesta **no** será tomada en cuenta.
+
+-- 

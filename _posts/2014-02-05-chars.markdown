@@ -1,0 +1,133 @@
+---
+layout: post
+title:  "Laboratorio #8"
+subtitle:  "Manejo de caracteres en MIPS"
+date:   2014-02-06 06:28:27
+categories: labs
+published: true
+due_date: 2014-02-06
+excerpt: Aprendiendo sobre manejo de caracteres en MIPS
+tags: mips chars
+---
+
+## Objetivos
+
+- Poner en práctica conceptos básicos vistos sobre MIPS.
+- Familiarizarse con el uso del simulador de MIPS MARS.
+- Tomar práctica sobre manejo de caracteres en MIPS.
+
+---
+
+## Ambiente de trabajo
+
+Debe descargar del GES, en la sección de materil de apoyo, el simulador MARS (un .jar). Adicionalmente deberá tener
+el runtime de Java instalado.
+
+--
+
+## Descripción
+
+Debe implementar 3 funciones en MIPS que hagan lo siguiente:
+
+{% highlight c %}
+// Cuenta cuantas veces aparece el carácter que trae el argumento ct en la cadena str.
+int CuentaCaracteres(char* str, char ct);
+
+// Reemplaza cada ocurrencia del segundo argumento(char c) por el tercer argumento(char r) en la cadena str. El cambio se realiza en la cadena original.
+void ReemplazaCaracteres(char* str, char c, char r);
+
+// Elimina cada ocurrencia del segundo argumento(char c) en la cadena de caracteres str. 
+// No debe únicamente reemplazarse por espacios en blanco, debe eliminarse y el cambio NO se realiza en la cadena original, debe devolver una nueva. 
+// Para esto puede colocar un buffer de tamaño fijo (100 bytes) ó puede usar memoria dinámica, como malloc en C con el syscall sbrk pero en SPIM no hay un equivalente a free :(
+char* EliminaCaracteres(char* str, char c);
+
+{% endhighlight %}
+
+Para ayudarlo un poco, recibirá código de un main y algunas funciones útiles para su programa, revise el código y entiendalo para que se le facilite el trabajo.
+
+{% highlight c %}
+.data
+      welkome:        .asciiz "Programa que juega con cadenas de caracteres,\naparecen 4 lineas (dobles), la de arriba es la\ncorrecta, la inferior es la de sus funciones\n"
+      msgCuenta:      .asciiz "\n3\n"
+      msgReemplaza:   .asciiz "\n\ncese cezedore cel\n"
+      msgElimina:     .asciiz "\nese ezedore el\n"
+      cadena: .asciiz "casa cazadora cal\n"
+      buffer:         .space  100
+.text
+main:
+        la $a0 welkome
+        jal print_str
+
+#llamada a CuentaCaracteres
+        la $a0 msgCuenta
+        jal print_str
+        la $a0 cadena
+        li $a1 'c'
+        jal CuentaCaracteres
+        move $a0 $v0
+        jal print_int
+
+#llamada a ReemplazaCaracteres
+        la $a0 msgReemplaza
+        jal print_str
+        la $a0 cadena
+        li $a1 'a'
+        li $a2 'e'
+        jal ReemplazaCaracteres
+        move $a0 $v0
+        jal print_str
+
+#llamada a EliminaCaracteres
+        la $a0 msgElimina
+        jal print_str
+        la $a0 cadena
+        li $a1 'c'
+        jal EliminaCaracteres
+        move $a0 $v0
+        jal print_str
+
+#llamada a CuentaCaracteres otra vez :-o solo para ver si no eliminaron en el original :D
+        la $a0 msgCuenta
+        jal print_str
+        la $a0 cadena
+        li $a1 'c'
+        jal CuentaCaracteres
+        move $a0 $v0
+        jal print_int
+        j exit
+
+CuentaCaracteres:
+        add $v0 $0 $0   #devuelvo cero
+        jr $ra
+
+ReemplazaCaracteres:
+        add $v0 $a0 $0  #devuelvo lo mismo que recibi :P
+        jr $ra
+
+EliminaCaracteres:
+        add $v0 $a0 $0  #devuelvo lo mismo que recibi :P
+        jr $ra
+
+print_str:
+        li $v0 4
+        syscall
+        jr $ra
+
+print_int:
+        li $v0 1
+        syscall
+        jr $ra
+
+exit:
+      li $v0 10
+        syscall
+{% endhighlight %}
+
+--
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 12 de marzo 2014**, debe enviar un archivo llamado `carnet.s` conteniendo su programa.  
+  
+No envíe archivos `.zip`, `.rar` , `.7z` o similares. Si lo hace, su respuesta **no** será tomada en cuenta.
+
+-- 

@@ -1,0 +1,97 @@
+---
+layout: post
+title:  "Laboratorio #9"
+subtitle:  "Manejo de caracteres en MIPS"
+date:   2014-02-07 06:28:27
+categories: labs
+published: true
+due_date: 2014-02-07
+excerpt: Aprendiendo sobre números con MIPS
+tags: mips numbers
+---
+
+## Objetivos
+
+- Poner en práctica conceptos básicos vistos sobre MIPS.
+- Familiarizarse con el uso del simulador de MIPS MARS.
+- Tomar práctica sobre números con MIPS.
+
+---
+
+## Ambiente de trabajo
+
+Debe descargar del GES, en la sección de materil de apoyo, el simulador MARS (un .jar). Adicionalmente deberá tener
+el runtime de Java instalado.
+
+--
+
+## Descripción
+
+En este laboratorio, trabajaremos con números, practicando notación: complemento a dos, complemento a uno, signo-magnitud y bias (-2^31).
+Deberá implementar las siguientes funciones
+
+{% highlight c %}
+// Recibe un número en notación complemento a 2 en $a0 y devuelve el número en notación complemento a 1 en $v0
+int complemento1(int num)
+
+// Recibe un número en notación complemento a 2 en $a0 y devuelve el número en notación signo/magnitud a 1 en $v0:
+int signoMagnitud(int num)
+
+// Recibe un número en notación complemento a 2 en $a0 y devuelve el número en notación con bias a 1 en $v0(con un bias de -2^31):
+int bias(int num)
+
+// Recibe un número en notación complemento a 2 en $a0 y lo imprime a pantalla
+void printComplemento2(int num)
+
+// Recibe un número en notación complemento a 1 en $a0 y lo imprime a pantalla
+void printComplemento1(int num)
+
+// Recibe un número en notación signo/magnitud en $a0 y lo imprime a pantalla
+void printSignoMagnitud(int num)
+
+// Recibe un número en notación con bias en $a0(con un bias de -2^31) y lo imprime a pantalla
+void printBias(int num)
+
+{% endhighlight %}
+
+### Un breve repaso
+
+Vamos a realizar un ejemplo con `4 bits`, recuerde que usted estará trabajando en `32 bits`.
+
+Veamos el número 5 en notación sin signo: `0101`.
+Veamos el número 5 en notación complemento a 1: `0101`.
+Veamos el número 5 en notación complemento a 2: `0101`.
+Veamos el número 5 en notación signo-magnitud: `0101`.
+Veamos el número 5 en notación con bias de -2^3: `1101` (5+8=13).  (recuerde que el suyo como esta en 32bits es un bias de 2^31)
+
+Como ven, salvo notación con bias, la representación no cambia.
+
+Veamos ahora el número -5 en binario: `1011`. 
+
+Dios que es eso??!!! calma, tómese un vasito de agua tibia con azúcar para que no se le baje la presión. 
+Ese es el -5 en complemento a 2, vemos este caso primero porque MIPS trabaja en complemento a 2.
+
+Ahora veamos el número -5 en complemento a 1: `1010` (y esto que?! recuerde: complemento a 2 - 1 = complemento a 1)
+
+Nótese que este si estuvieramos trabajando en notación sin signo, esa hilera de unos y ceros representaría al número 10 (en base 10), pero como estamos trabajando con notación complemento a 1 esta hilera de unos y ceros representa otra cosa. 
+
+Es por esto que usted debe hacer una función llamada printComplemento1 que hará el proceso inverso para que saque el número a su forma "normal", esto quiere decir que si yo recibo `0101` al llamar a complemento1 debo obtener un `1010` y al llamar printComplemento1 se realizará alguna conversión para lo que veamos en pantalla sea -5.
+
+Ahora veamos el número -5 con bias de 2^3: -5 + 8 = 3 entonces `0011`.
+
+Ahora veamos el número -5 con signo-magnitud (recuerde que el suyo es de `32 bits`, el bit del signo es el 32 y no el 4 como en este caso): `1101`.
+
+Recuerde:
+
+* Usted recibe siempre un número en complemento a 2.
+* Usted debe recibir un número no una cadena de caracteres.
+* MIPS maneja los negativos en complemento a 2.
+
+--
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 19 de marzo 2014**, debe enviar un archivo llamado `carnet.s` conteniendo su programa.  
+  
+No envíe archivos `.zip`, `.rar` , `.7z` o similares. Si lo hace, su respuesta **no** será tomada en cuenta.
+
+-- 
