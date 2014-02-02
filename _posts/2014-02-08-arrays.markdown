@@ -20,7 +20,7 @@ tags: mips arrays
 
 ## Ambiente de trabajo
 
-Debe descargar del GES, en la sección de materil de apoyo, el simulador MARS (un .jar).  
+Debe descargar del GES, en la sección de material de apoyo, el simulador MARS (un .jar).  
 Adicionalmente deberá tener el runtime de Java instalado.
 
 --

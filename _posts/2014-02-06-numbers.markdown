@@ -20,7 +20,7 @@ tags: mips numbers
 
 ## Ambiente de trabajo
 
-Debe descargar del GES, en la sección de materil de apoyo, el simulador MARS (un .jar). Adicionalmente deberá tener
+Debe descargar del GES, en la sección de material de apoyo, el simulador MARS (un .jar). Adicionalmente deberá tener
 el runtime de Java instalado.
 
 --
